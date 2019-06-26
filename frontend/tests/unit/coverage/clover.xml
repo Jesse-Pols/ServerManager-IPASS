@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1561485149105" clover="3.2.0">
-  <project timestamp="1561485149105" name="All files">
-    <metrics statements="85" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="26" coveredmethods="0" elements="113" coveredelements="4" complexity="0" loc="85" ncloc="85" packages="2" files="9" classes="9">
+<coverage generated="1561487529076" clover="3.2.0">
+  <project timestamp="1561487529077" name="All files">
+    <metrics statements="86" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="26" coveredmethods="0" elements="114" coveredelements="4" complexity="0" loc="86" ncloc="86" packages="2" files="9" classes="9">
       <package name="src">
         <metrics statements="25" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <file name="App.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\App.vue">
@@ -37,7 +37,7 @@
         </file>
       </package>
       <package name="src.components">
-        <metrics statements="60" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="19" coveredmethods="0"/>
+        <metrics statements="61" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="19" coveredmethods="0"/>
         <file name="Bootstrap.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\Bootstrap.vue">
           <metrics statements="10" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
           <line num="47" count="0" type="stmt"/>
@@ -112,12 +112,13 @@
           <line num="63" count="0" type="stmt"/>
         </file>
         <file name="backend-api.js" path="D:\School\IPASS\IPASS-Project\frontend\src\components\backend-api.js">
-          <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="6" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="3" count="1" type="stmt"/>
           <line num="11" count="0" type="stmt"/>
           <line num="14" count="0" type="stmt"/>
           <line num="17" count="0" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
         </file>
       </package>
     </metrics>

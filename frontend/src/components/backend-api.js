@@ -7,6 +7,9 @@ const AXIOS = axios.create({
 
 
 export default {
+    status() {
+        return AXIOS.get('/status');
+    },
     hello() {
         return AXIOS.get(`/hello`);
     },

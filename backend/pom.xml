@@ -88,6 +88,23 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--  ORACLE DRIVER  -->
+		<!-- https://mvnrepository.com/artifact/com.oracle.jdbc/ojdbc8 -->
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>ojdbc</artifactId>
+		    <version>8</version>
+		    <scope>system</scope>
+		    <systemPath>${basedir}/lib/ojdbc8.jar</systemPath>
+		</dependency>
+		
+		<!--  JSONObjects  -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
