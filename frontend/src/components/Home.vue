@@ -7,7 +7,7 @@
         <button @click="setSort('Studenten')">Studenten</button>
         <button @click="setSort('Docenten')">Docenten</button>
         <button @click="setSort('OP')">Onderwijsondersteunend Personeel</button>
-        <button @click="check()">Check</button>
+        <button @click="check()" id="actionButton">Check</button>
     </div>
 
     <!-- Lijst met diensten -->
@@ -135,4 +135,11 @@ li {
 a {
   color: #42b983;
 }
+
+#actionButton {
+    background-color: #FFCD00;
+    border-color: #FFCD00;
+}
+
+
 </style>

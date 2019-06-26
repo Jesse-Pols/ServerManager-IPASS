@@ -29,9 +29,6 @@ import de.jonashackt.springbootvuejs.repository.UserRepository;
 public class BackendController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BackendController.class);
-
-    public static final String HELLO_TEXT = "Hello from Spring Boot Backend!";
-    public static final String SECURED_TEXT = "Hello from the secured resource!";
     
     public static final String BASE_URL = "de.jonashackt.springbootvuejs.controller.BackendController.java";
 
@@ -77,7 +74,7 @@ public class BackendController {
     @RequestMapping(path = "/hello")
     public @ResponseBody String sayHello() {
         LOG.info("GET called on /hello resource");
-        return HELLO_TEXT;
+        return "Hi";
     }
 
     @RequestMapping(path = "/user/{lastName}/{firstName}", method = RequestMethod.POST)
@@ -102,7 +99,7 @@ public class BackendController {
     @RequestMapping(path="/secured", method = RequestMethod.GET)
     public @ResponseBody String getSecured() {
         LOG.info("GET successfully called on /secured resource");
-        return SECURED_TEXT;
+        return "Hi, but more secure";
     }
     
     private boolean newRequest(String query) throws IOException {
