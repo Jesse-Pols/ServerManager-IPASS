@@ -2,27 +2,27 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import DienstWorkshop from '@/components/DienstWorkshop'
+import Login from '@/components/Login'
+import ControlPanel from '@/components/ControlPanel'
 
 import store from './store'
 
 Vue.use(Router);
 
 const router = new Router({
-    mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
+    mode: 'history',
     routes: [
         { path: '/', component: Home },
-        { path: '/dienst/:action', component: DienstWorkshop },
-
-        // otherwise redirect to home
+        { path: '/login', component: Login },
+        { path: '/controlpanel', component: ControlPanel, meta: { requiresAuth: true }},
+        { path: '/dienst/:action', component: DienstWorkshop, meta: { requiresAuth: true }},
         { path: '*', redirect: '/' }
     ]
 });
 
-/*
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        // this route requires auth, check if logged in
-        // if not, redirect to login page.
+        // Check if logged in
         if (!store.getters.isLoggedIn) {
             next({
                 path: '/login'
@@ -31,9 +31,8 @@ router.beforeEach((to, from, next) => {
             next();
         }
     } else {
-        next(); // make sure to always call next()!
+        next();
     }
 });
-*/
 
 export default router;

@@ -2,10 +2,18 @@
     <div class="dienst_workshop">
         <!-- <h1>Dienst {{ plannedAction }}</h1> -->
 
-           <h1> Dienst {{ $route.params.action }} </h1>
+           <h1> Dienst {{ $route.params.action }} </h1><br>
         
         <input type="text" v-model="dienst.name" placeholder="Naam">
-        <input type="text" v-model="dienst.key" placeholder="URL">
+        <input type="text" v-model="dienst.key" placeholder="URL"><br><br>
+
+        <h4>Relevant voor:</h4>
+        <input type="checkbox" id="studentenCheckbox" v-model="Studenten">
+        <label for="studentenCheckbox">&nbsp;Studenten</label><br>
+        <input type="checkbox" id="docentenCheckbox" v-model="Docenten">
+        <label for="docentenCheckbox">&nbsp;Docenten</label><br>
+        <input type="checkbox" id="opCheckbox" v-model="OP">
+        <label for="opCheckbox">&nbsp;Onderwijsondersteunend Personeel</label><br><br>
 
         <button @click="createDienst()" v-if="actions.create">Aanmaken</button>
         <button @click="deleteDienst()" v-if="actions.change">Wijzigen</button>
@@ -54,23 +62,78 @@ export default {
                 create: true,
                 change: false,
                 delete: false
-            }
+            },
+            Studenten: false,
+            Docenten: false,
+            OP: false
         }
     },
 
     methods: {
         createDienst: function() {
 
-            console.log(this.dienst);
+            // Check if all fields are filled in
+            // Check if any one of the checkboxes is filled
+            // Send request to api
+            this.dienst.relevance = '';
+            var self = this;
+            var addToString = function(str, x){
+                if (str != '')
+                    str += ',';
+                str += x;
+                return str;
+            }
 
-            api.createDienst(this.dienst)
-            .then(response => {
-                console.log(response);
+            if (self.dienst.name == '' || self.dienst.key == '') {
+                alert("Vul een naam en een URL in.");
+                return;
+            }
 
-            })
-            .catch(e => {
-                console.log(e);
-            })
+            if (self.Studenten)
+                self.dienst.relevance = addToString(self.dienst.relevance, 'Studenten');
+            if (self.Docenten)
+                self.dienst.relevance = addToString(self.dienst.relevance, 'Docenten');
+            if (self.OP)
+                self.dienst.relevance = addToString(self.dienst.relevance, 'OP');
+
+            console.log(self.dienst.relevance);
+
+            if (self.dienst.relevance == '') {
+                api.createDienst(self.dienst)
+                .then(response => {
+                    console.log(response);
+                })
+                .then(() => {
+                    this.$router.push('/controlpanel')
+                });
+            } else {
+                api.createDienstWithRelevance(self.dienst)
+                .then(response => {
+                    console.log(response);
+                })
+                .then(() => {
+                    this.$router.push('/controlpanel')
+                });
+            }
+                
+                
+
+
+/*
+
+            
+            if (this.dienst.relevance == '') {
+            	api.createDienst(this.dienst)
+            	.then(response => {
+            		console.log(response);
+            	});               
+            } else {
+            	api.createDienstWithRelevance(this.dienst)
+            	.then(response => {
+            		console.log(response);
+            	});
+            }
+            */
 
         }
     }

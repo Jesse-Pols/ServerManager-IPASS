@@ -15,11 +15,11 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 		try {
 			
 			ps = dbConnection.prepareStatement(
-					"SELECT D_ID, D_NAME, D_KEY, D_RELEVANCE FROM diensten");
+					"SELECT id, name, key, relevance FROM dienst");
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				Dienst dienst = new Dienst(rs.getInt(1), rs.getString(2), rs.getString(3));
+				Dienst dienst = new Dienst(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				if (rs.getString(4) != null)
 					dienst.setRelevance(rs.getString(4));
 				diensten.add(dienst);
@@ -33,20 +33,25 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 		return diensten;
 	}
 
-	public void save(Dienst dienst) {		
+	public boolean save(Dienst dienst) {		
+		
+		System.out.println(dienst.getRelevance());
 
 		try {
 			
 			ps = dbConnection.prepareStatement(
-					"INSERT INTO diensten VALUES (?,?,?,null)");
-			ps.setInt(1, dienst.getDienstId());
-			ps.setString(2, dienst.getName());
-			ps.setString(3, dienst.getKey());
+					"INSERT INTO dienst VALUES (null,?,?,?)");
+			ps.setString(1, dienst.getName());
+			ps.setString(2, dienst.getKey());
+
+			ps.setString(3, dienst.getRelevance());
 			ps.executeQuery();
 			ps.close();
 			
 		} catch (Exception ex)
-		{ System.out.println(BASE_URL + ".save() Failed: " + ex); }
+		{ System.out.println(BASE_URL + ".save() Failed: " + ex); return false; }
+		
+		return true;
 		
 	}
 	

@@ -2,32 +2,41 @@ package de.jonashackt.springbootvuejs.domain;
 
 public class Dienst {
 
-	private int dienstId;
+	private int id;
 	private String name, key, status, relevance;
 	// Status isn't saved in the database
 	// Relevance tells us which usergroup would be most interested in this Dienst
 	
-	public Dienst() {
-		
-	}
+	public Dienst() { }
 	
-	public Dienst(String name, String status) {		
+	public Dienst(String name) {		
 		this.name = name;
-		this.status = status;		
 	}
 	
-	public Dienst(int dienstId, String name, String key) {
-		this.dienstId = dienstId;
+	public Dienst(String name, String key) {
 		this.name = name;
 		this.key = key;
-	}	
+	}
 	
-	public int getDienstId() {
-		return dienstId;
+	public Dienst(String name, String key, String relevance) {
+		this.name = name;
+		this.key = key;
+		this.relevance = relevance;
+	}
+	
+	public Dienst(int id, String name, String key, String relevance) {
+		this.id = id;
+		this.name = name;
+		this.key = key;
+		this.relevance = relevance;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setDienstId(int dienstId) {
-		this.dienstId = dienstId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -64,7 +73,7 @@ public class Dienst {
 
 	public String toString() {
 		String s = "";
-		s += "ID: " + this.dienstId;
+		s += "ID: " + this.id;
 		s += "\nName: " + this.name;
 		s += "\nKey: " + this.key;
 		s += "\nStatus: " + this.status;
@@ -75,7 +84,7 @@ public class Dienst {
 	public boolean equals(Object object) {
 		if (object instanceof Dienst) {
 			Dienst dienst = (Dienst) object;
-			if (dienst.getDienstId() == this.dienstId &&
+			if (dienst.getId() == this.id &&
 					dienst.getName().equals(this.name) &&
 					dienst.getKey().equals(this.key) &&
 					dienst.getStatus().equals(this.status))
