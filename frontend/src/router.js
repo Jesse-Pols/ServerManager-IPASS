@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import Service from '@/components/Service'
-import Bootstrap from '@/components/Bootstrap'
-import User from '@/components/User'
-import Login from '@/components/Login'
-import Protected from '@/components/Protected'
 import Home from '@/components/Home'
+import DienstWorkshop from '@/components/DienstWorkshop'
 
 import store from './store'
 
@@ -16,24 +11,14 @@ const router = new Router({
     mode: 'history', // uris without hashes #, see https://router.vuejs.org/guide/essentials/history-mode.html#html5-history-mode
     routes: [
         { path: '/', component: Home },
-        { path: '/callservice', component: Service },
-        { path: '/bootstrap', component: Bootstrap },
-        { path: '/user', component: User },
-        { path: '/login', component: Login },
-        { path: '/hello', component: Hello },
-        {
-            path: '/protected',
-            component: Protected,
-            meta: {
-                requiresAuth: true
-            }
-        },
+        { path: '/dienst/:action', component: DienstWorkshop },
 
         // otherwise redirect to home
         { path: '*', redirect: '/' }
     ]
 });
 
+/*
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
@@ -49,5 +34,6 @@ router.beforeEach((to, from, next) => {
         next(); // make sure to always call next()!
     }
 });
+*/
 
 export default router;

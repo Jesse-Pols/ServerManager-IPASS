@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img src="./../assets/spring-boot-vuejs-logo.png">
-    <h1>{{ hellomsg }}</h1>
+    <h1>Welkom!</h1>
 
     <div class="buttons">
         <button @click="setSort('Studenten')">Studenten</button>
@@ -36,7 +36,6 @@ import api from "./backend-api";
 
 export default {
   name: 'home',
-  props: { hellomsg: { type: String, required: true } },
   mounted:function() { this.check(); },
   data () {
       return {

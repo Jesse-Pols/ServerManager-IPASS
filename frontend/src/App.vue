@@ -2,16 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-
-      <router-link to="/callservice">Service</router-link> |
-            <!-- 
-      <router-link to="/bootstrap">Bootstrap</router-link> |
-      <router-link to="/user">User</router-link> |
-      -->
-      <router-link to="/login">Login</router-link> |
-      <!-- <router-link to="/protected">Protected</router-link> -->
+      <router-link to="/dienst/Aanmaken">Diensten Aanmaken</router-link> |
+      <router-link to="/dienst/Verwijderen">Diensten Verwijderen</router-link>
     </div>
-    <router-view :hellomsg="msg"></router-view>
+    <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
 
