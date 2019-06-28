@@ -1,20 +1,14 @@
 <template>
-  <div class="unprotected" v-if="loginError">
-    <h1><b-badge variant="danger">You don't have rights here, mate :D</b-badge></h1>
-    <h5>Seams that you don't have access rights... </h5>
-  </div>
-  <div class="unprotected" v-else>
-    <h1><b-badge variant="info">Please login to get access!</b-badge></h1>
-    <h5>You're not logged in - so you don't see much here. Try to log in:</h5>
+    <div class="login">
+        <h5>Gebruik uw emailadres en wachtwoord om in te loggen.</h5>
 
-    <form @submit.prevent="callLogin()">
-      <input type="text" placeholder="username" v-model="user">
-      <input type="password" placeholder="password" v-model="password">
-      <b-btn variant="success" type="submit">Login</b-btn>
-      <p v-if="error" class="error">Bad login information</p>
-    </form>
-  </div>
-
+        <form @submit.prevent="callLogin()">
+            <input type="text" placeholder="E-mail" v-model="user.email">
+            <input type="text" placeholder="Wachtwoord" v-model="user.pass">
+            <b-btn variant="success" type="submit">Inloggen</b-btn>
+            <p v-if="error" class="error">De inloggegevens zijn incorrect</p>
+        </form>
+    </div>   
 </template>
 
 <script>
@@ -23,19 +17,21 @@ export default {
 
   data () {
     return {
-      loginError: false,
-      user: '',
-      password: '',
-      error: false,
-      errors: []
+        user: {
+            email: 'jessepols@gmail.com',
+            pass: ''
+        },
+        loginError: false,
+        error: false,
+        errors: []
     }
   },
   methods: {
     callLogin() {
       this.errors = [];
-      this.$store.dispatch("login", { user: this.user, password: this.password})
+      this.$store.dispatch("login", { email: this.user.email, password: this.user.pass})
         .then(() => {
-          this.$router.push('/Protected')
+          this.$router.push('/controlpanel')
         })
         .catch(error => {
           this.loginError = true;
@@ -46,3 +42,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

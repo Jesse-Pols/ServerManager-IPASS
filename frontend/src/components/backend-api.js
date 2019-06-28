@@ -1,27 +1,28 @@
 import axios from 'axios'
+import Axios from 'axios';
 
 const AXIOS = axios.create({
-  baseURL: `/api`,
-  timeout: 1000
+  baseURL: `/api`
 });
 
 
 export default {
-    hello() {
-        return AXIOS.get(`/hello`);
+    status() {
+        return AXIOS.get('/status');
     },
-    getUser(userId) {
-        return AXIOS.get(`/user/` + userId);
+    createDienst(dienst) {
+        return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key);
     },
-    createUser(firstName, lastName) {
-        return AXIOS.post(`/user/` + firstName + '/' + lastName);
+    createDienstWithRelevance(dienst) {
+    	return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);
     },
     getSecured(user, password) {
-        return AXIOS.get(`/secured/`,{
+        return AXIOS.get('/secured/', {
             auth: {
                 username: user,
                 password: password
-            }});
+            }
+        });
     }
 }
 
