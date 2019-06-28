@@ -1,8 +1,9 @@
 package de.jonashackt.springbootvuejs.controller;
 
-import de.jonashackt.springbootvuejs.SpringBootVuejsApplication;
-import de.jonashackt.springbootvuejs.domain.User;
-import io.restassured.RestAssured;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import de.jonashackt.springbootvuejs.SpringBootVuejsApplication;
+import io.restassured.RestAssured;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -58,7 +56,7 @@ public class BackendControllerTest {
 	public void secured_api_should_give_http_200_when_authorized() {
 
 		given()
-			.auth().basic("sina", "miller")
+			.auth().basic("me", "admin")
 		.when()
 			.get("/api/secured")
 		.then()

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/backend-api.js</title>
+    <title>Code coverage report for src/components/ControlPanel.vue</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\..\prettify.css" />
     <link rel="stylesheet" href="..\..\base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> backend-api.js
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> ControlPanel.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/3</span>
       </div>
     </div>
   </div>
@@ -72,7 +72,19 @@
 27
 28
 29
-30</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+30</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -82,16 +94,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,37 +101,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import axios from 'axios'</span>
-import Axios from 'axios';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h1&gt;&lt;b-badge variant="info"&gt;Control Panel&lt;/b-badge&gt;&lt;/h1&gt;
+        &lt;router-link to="/dienst/Aanmaken"&gt;&lt;h5&gt;&lt;b-badge variant="primary" id="dienstAanmakenBtn"&gt;Nieuwe Dienst&lt;/b-badge&gt;&lt;/h5&gt;&lt;/router-link&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
 &nbsp;
-const AXIOS = <span class="cstat-no" title="statement not covered" >axios.create({</span>
-  baseURL: `/api`
-});
-&nbsp;
+&lt;script&gt;
+<span class="cstat-no" title="statement not covered" >import api from './backend-api'</span>
+<span class="cstat-no" title="statement not covered" >import store from './../store'</span>
 &nbsp;
 export default {
-    status() {
-<span class="cstat-no" title="statement not covered" >        return AXIOS.get('/status');</span>
-    },
-    createDienst(dienst) {
-<span class="cstat-no" title="statement not covered" >        return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key);</span>
-    },
-    createDienstWithRelevance(dienst) {
-<span class="cstat-no" title="statement not covered" >    	return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);</span>
-    },
-    getSecured(user, password) {
-<span class="cstat-no" title="statement not covered" >        return AXIOS.get('/secured/', {</span>
-            auth: {
-                username: user,
-                password: password
-            }
-        });
+    name: 'controlpanel',
+&nbsp;
+    data () {
+<span class="cstat-no" title="statement not covered" >        return {</span>
+        }
     }
+&nbsp;
+}
+&lt;/script&gt;
+&nbsp;
+&lt;style&gt;
+&nbsp;
+#dienstAanmakenBtn {
+    padding: 10px;
 }
 &nbsp;
-&nbsp;
+&lt;/style&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

@@ -1,16 +1,20 @@
 <template>
     <div>
-        <h1><b-badge variant="info">Control Panel</b-badge></h1>
-        <router-link to="/dienst/Aanmaken"><h5><b-badge variant="primary" id="dienstAanmakenBtn">Nieuwe Dienst</b-badge></h5></router-link>
+        <DienstList ControlPanel></DienstList>
     </div>
 </template>
 
 <script>
 import api from './backend-api'
 import store from './../store'
+import DienstList from '@/components/modules/DienstList'
 
 export default {
     name: 'controlpanel',
+
+    components: {
+        DienstList
+    },
 
     data () {
         return {
@@ -21,6 +25,10 @@ export default {
 </script>
 
 <style>
+
+#logsBtn {
+    padding: 10px;
+}
 
 #dienstAanmakenBtn {
     padding: 10px;

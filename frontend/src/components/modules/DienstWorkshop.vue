@@ -1,6 +1,31 @@
 <template>
     <div class="dienst_workshop">
+        <h1>Dienst Aanmaken</h1>
+    </div>
+</template>
+
+<script>
+import api from './../backend-api'
+
+export default {
+    name: 'dienst_workshop',
+
+    props: {
+        Aanmaken: true,
+        Wijzigen: false,
+        Verwijderen: false
+    }
+
+}
+</script>
+
+<style>
+
+</style>    
+    <!--
+
         <!-- <h1>Dienst {{ plannedAction }}</h1> -->
+        <!--
 
            <h1> Dienst {{ $route.params.action }} </h1><br>
         
@@ -143,3 +168,4 @@ export default {
 <style>
 
 </style>
+-->

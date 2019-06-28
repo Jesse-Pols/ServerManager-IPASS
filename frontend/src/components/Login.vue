@@ -1,18 +1,14 @@
 <template>
-    <div class="unprotected" v-if="loginError">
-        <!-- User shouldn't see this -->
-        <p>U hoort hier niet te zijn!</p>
-    </div>
-    <div class="unprotected" v-else>
+    <div class="login">
         <h5>Gebruik uw emailadres en wachtwoord om in te loggen.</h5>
 
         <form @submit.prevent="callLogin()">
             <input type="text" placeholder="E-mail" v-model="user.email">
             <input type="text" placeholder="Wachtwoord" v-model="user.pass">
             <b-btn variant="success" type="submit">Inloggen</b-btn>
-            <p v-if="error" class="error">De inloggegevens zijn inccorrect</p>
+            <p v-if="error" class="error">De inloggegevens zijn incorrect</p>
         </form>
-    </div>    
+    </div>   
 </template>
 
 <script>
@@ -22,7 +18,7 @@ export default {
   data () {
     return {
         user: {
-            email: '',
+            email: 'jessepols@gmail.com',
             pass: ''
         },
         loginError: false,

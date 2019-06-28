@@ -90,9 +90,12 @@
 45
 46
 47
-48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+48
+49
+50
+51
+52
+53</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,6 +127,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,27 +138,30 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div class="unprotected" v-if="loginError"&gt;
-    &lt;h1&gt;&lt;b-badge variant="danger"&gt;You don't have rights here, mate :D&lt;/b-badge&gt;&lt;/h1&gt;
-    &lt;h5&gt;Seams that you don't have access rights... &lt;/h5&gt;
-  &lt;/div&gt;
-  &lt;div class="unprotected" v-else&gt;
-    &lt;h1&gt;&lt;b-badge variant="info"&gt;Please login to get access!&lt;/b-badge&gt;&lt;/h1&gt;
-    &lt;h5&gt;You're not logged in - so you don't see much here. Try to log in:&lt;/h5&gt;
+    &lt;div class="unprotected" v-if="loginError"&gt;
+        &lt;!-- User shouldn't see this --&gt;
+        &lt;p&gt;U hoort hier niet te zijn!&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="unprotected" v-else&gt;
+        &lt;h5&gt;Gebruik uw emailadres en wachtwoord om in te loggen.&lt;/h5&gt;
 &nbsp;
-    &lt;form @submit.prevent="callLogin()"&gt;
-      &lt;input type="text" placeholder="username" v-model="user"&gt;
-      &lt;input type="password" placeholder="password" v-model="password"&gt;
-      &lt;b-btn variant="success" type="submit"&gt;Login&lt;/b-btn&gt;
-      &lt;p v-if="error" class="error"&gt;Bad login information&lt;/p&gt;
-    &lt;/form&gt;
-  &lt;/div&gt;
-&nbsp;
+        &lt;form @submit.prevent="callLogin()"&gt;
+            &lt;input type="text" placeholder="E-mail" v-model="user.email"&gt;
+            &lt;input type="text" placeholder="Wachtwoord" v-model="user.pass"&gt;
+            &lt;b-btn variant="success" type="submit"&gt;Inloggen&lt;/b-btn&gt;
+            &lt;p v-if="error" class="error"&gt;De inloggegevens zijn inccorrect&lt;/p&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;    
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
@@ -162,19 +170,21 @@ export default {
 &nbsp;
   data () {
 <span class="cstat-no" title="statement not covered" >    return {</span>
-      loginError: false,
-      user: '',
-      password: '',
-      error: false,
-      errors: []
+        user: {
+            email: '',
+            pass: ''
+        },
+        loginError: false,
+        error: false,
+        errors: []
     }
   },
   methods: {
     callLogin() {
 <span class="cstat-no" title="statement not covered" >      this.errors = [];</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      this.$store.dispatch("login", { user: this.user, password: this.password})</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      this.$store.dispatch("login", { email: this.user.email, password: this.user.pass})</span></span>
         .then(() =&gt; {
-<span class="cstat-no" title="statement not covered" >          this.$router.push('/Protected')</span>
+<span class="cstat-no" title="statement not covered" >          this.$router.push('/controlpanel')</span>
 <span class="fstat-no" title="function not covered" >        })</span>
         .catch(error =&gt; {
 <span class="cstat-no" title="statement not covered" >          this.loginError = true;</span>
@@ -184,13 +194,18 @@ export default {
     }
   }
 }
-&lt;/script&gt;</pre></td></tr>
+&lt;/script&gt;
+&nbsp;
+&lt;style&gt;
+&nbsp;
+&lt;/style&gt;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 27 2019 10:52:21 GMT+0200 (Central European Summer Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jun 27 2019 20:07:01 GMT+0200 (Central European Summer Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

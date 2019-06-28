@@ -10,14 +10,8 @@
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welkom!'
-    }
-  }
+  name: 'app'
 }
 </script>
 
