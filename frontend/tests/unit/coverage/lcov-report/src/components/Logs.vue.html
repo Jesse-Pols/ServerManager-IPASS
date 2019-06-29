@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/ControlPanel.vue</title>
+    <title>Code coverage report for src/components/Logs.vue</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\..\prettify.css" />
     <link rel="stylesheet" href="..\..\base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> ControlPanel.vue
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> Logs.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/1</span>
       </div>
     </div>
   </div>
@@ -87,26 +87,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,40 +118,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-    &lt;div&gt;
-        &lt;DienstList ControlPanel&gt;&lt;/DienstList&gt;
+  &lt;div class="logs"&gt;
+    &lt;h1&gt;Logs&lt;/h1&gt;
+&nbsp;
+    &lt;!-- Lijst met diensten --&gt;
+    &lt;div id="dienst_table"&gt;
+        &lt;div v-for="dienst in diensten" v-bind:key="dienst.id"&gt;
+            &lt;div class='card'&gt;
+                &lt;div class='card-body'&gt;
+                    &lt;h6 class='card-title'&gt;
+                        {{ dienst.name }}
+                    &lt;/h6&gt;
+                    &lt;p class='card-text'&gt;
+                        &lt;div&gt;
+                            {{ dienst.status }}
+                        &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
+&nbsp;
+  &lt;/div&gt;
+&nbsp;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import api from './backend-api'</span>
-<span class="cstat-no" title="statement not covered" >import store from './../store'</span>
-<span class="cstat-no" title="statement not covered" >import DienstList from '@/components/modules/DienstList'</span>
+<span class="cstat-no" title="statement not covered" >import api from './backend-api';</span>
 &nbsp;
 export default {
-    name: 'controlpanel',
-&nbsp;
-    components: {
-        DienstList
-    },
-&nbsp;
-    data () {
-<span class="cstat-no" title="statement not covered" >        return {</span>
-        }
-    }
+    name: 'logs'
 &nbsp;
 }
 &lt;/script&gt;
 &nbsp;
 &lt;style&gt;
-&nbsp;
-#logsBtn {
-    padding: 10px;
-}
-&nbsp;
-#dienstAanmakenBtn {
-    padding: 10px;
-}
 &nbsp;
 &lt;/style&gt;
 &nbsp;</pre></td></tr>

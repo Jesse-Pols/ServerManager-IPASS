@@ -1,8 +1,8 @@
 <template>
     <div class="workshop">
-        <DienstWorkshop Aanmaken v-if="Dienst.Aanmaken"></DienstWorkshop>
-        <DienstWorkshop Wijzigen v-if="Dienst.Wijzigen"></DienstWorkshop>
-        <DienstWorkshop Verwijderen v-if="Dienst.Verwijderen"></DienstWorkshop>
+        <!-- Workshop is een verzamelplaats van alle gespecificeerde workshops, waar bijvoorbeeld crud handelingen mee worden uitgevoerd -->
+        <DienstWorkshop v-bind:Wijzigen="Dienst.Wijzigen" v-bind:Aanmaken="Dienst.Aanmaken" v-bind:Value="Dienst.Value" v-if="Dienst.Aanmaken"></DienstWorkshop>
+        <DienstWorkshop v-bind:Wijzigen="Dienst.Wijzigen" v-bind:Aanmaken="Dienst.Aanmaken" v-bind:Value="Dienst.Value" v-if="Dienst.Wijzigen"></DienstWorkshop>
     </div>
 </template>
 
@@ -11,34 +11,36 @@ import api from './backend-api';
 import DienstWorkshop from '@/components/modules/DienstWorkshop'
 
 export default {
-    name: 'workshop',
+    name: 'workshop',      
 
-    mounted: function() {
-        console.log(this.$route.params.action);
-        console.log(this.$route.params.type);
-
-        var type = this.$route.params.type;
-        var action = this.$route.params.action;
-
-        if (type == 'Dienst') {
-            if (action == 'Aanmaken') this.Dienst.Aanmaken = true; else this.Dienst.Aanmaken = false;
-            if (action == 'Wijzigen') this.Dienst.Wijzigen = true; else this.Dienst.Wijzigen = false;
-            if (action == 'Verwijderen') this.Dienst.Verwijderen = true; else this.Dienst.Verwijderen = false;
-        }
-    },
-
-    components: {
-        DienstWorkshop
-    },
-    
     data () {
         return {
             Dienst: {
                 Aanmaken: true,
                 Wijzigen: false,
-                Verwijderen: false
+                Value: null
             }
         }
+    },
+
+    created: function() {
+        // Deze code draait nadat de data is ingeladen, maar nog voor dat de template is gerendered.
+        // Hier wordt bepaald welke workshop er getoont moet gaan worden, op basis van het type, de actie en in sommige gevallen de value.
+
+        var type = this.$route.params.wType;
+        var action = this.$route.params.wAction;
+        var value = this.$route.params.wValue;
+
+        if (type == 'Dienst') {
+            this.Dienst.Aanmaken = (action == 'Aanmaken' ? true : false);
+            this.Dienst.Wijzigen = (action == 'Wijzigen' ? true : false);
+            if (value != null) this.Dienst.Value = value;
+        }
+
+    },
+
+    components: {
+        DienstWorkshop
     }
 }
 </script>

@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style scoped>
+/* De tag 'scoped' betekent dat de onderstaande css alleen in deze component werkt, 
+zonder deze tag zou al deze styling op alle components in de app toegepast worden. */
 h1, h2 {
   font-weight: normal;
 }

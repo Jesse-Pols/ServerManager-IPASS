@@ -33,9 +33,29 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 		return diensten;
 	}
 
-	public boolean save(Dienst dienst) {		
+	public String findKeyById(int id) {
 		
-		System.out.println(dienst.getRelevance());
+		String key = "";
+		
+		try {
+
+			ps = dbConnection.prepareStatement(
+				"SELECT key FROM dienst WHERE id=?");
+			ps.setInt(1,id);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				key = rs.getString(1);
+			}
+
+		} catch (Exception ex) 
+		{ System.out.println(BASE_URL + ".findKeyById() Failed: " + ex); }
+		
+		return key;
+
+	}
+
+	public boolean save(Dienst dienst) {		
 
 		try {
 			

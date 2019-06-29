@@ -22,44 +22,38 @@ import de.jonashackt.springbootvuejs.domain.Dienst;
 public class BackendController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BackendController.class);
-    public static final String HELLO_TEXT = "Hello from Spring Boot Backend!";
     public static final String SECURED_TEXT = "Hello from the secured resource!";    
     public static final String BASE_URL = "de.jonashackt.springbootvuejs.controller.BackendController.java";
 
-    @SuppressWarnings("unchecked")
-	@RequestMapping(path = "/status")
-    public @ResponseBody JSONObject checkStatus() {
-        LOG.info("GET called on /status resource. \nChecking status of server....");
-        // Check database for servers
-        // Elke dienst checken op status
-        // Alle diensten als JSON object terug sturen
+    // Get all Diensten and check each one's status
+    @RequestMapping (path = "/dienst/get")
+    public @ResponseBody JSONObject getDiensten() {
+        LOG.info("GET called on /dienst/get. \nGetting all diensten...\nChecking each Dienst's status...");
 
         DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
-        List<Dienst> diensten = dodi.findAll();
+        List<Dienst> diensten = dodi.findAll(); 
         JSONObject jsonObject = new JSONObject();
-        
-        try {
-        	
-        	for (Dienst dienst : diensten) {
-        		// Request doen naar de status
-        		//caboolean content = this.newRequest(dienst.getKey());
-        		boolean content = true;
-        		if (content)
-        			dienst.setStatus("Beschikbaar");
-        		else
-        			dienst.setStatus("Niet Beschikbaar");
-        	}
-        	
-        	// Alle diensten worden in jsonObject.diensten opgeslagen en teruggestuurd met de response
-        	jsonObject.put("Diensten", diensten);
-        	return jsonObject;
-        	
-        } catch (Exception ex)
-        { System.out.println(BASE_URL + ".checkStatus() Failed: " + ex); }
-        
-        jsonObject.put("Error", "Couldn't check the status");
-        return jsonObject;
 
+        try {
+            for (Dienst dienst : diensten) {
+                // boolean content = this.checkRequest(dienst.getKey());
+                boolean content = true;
+                if (content) dienst.setStatus("Beschikbaar");
+                else dienst.setStatus("Niet Beschikbaar");
+            }
+            jsonObject.put("Diensten", diensten);
+        } catch (Exception ex) {
+            System.out.println(BASE_URL + ".checkStatus() Failed: " + ex);
+            jsonObject.put("Error", "Couldn't check the status");
+        }
+        return jsonObject;
+    }
+
+    // Get dienst key by id
+    @RequestMapping (path = "/dienst/get/{id}", method = RequestMethod.GET)
+    public @ResponseBody String getKeyById(@PathVariable("id") int id) {
+        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
+        return dodi.findKeyById(id);
     }
     
     @RequestMapping(path = "/dienst/create/{name}/{key}", method = RequestMethod.POST)
@@ -91,7 +85,7 @@ public class BackendController {
         return "Succesfully called getSecured()!";
     }
     
-    private boolean newRequest(String query) throws IOException {
+    private boolean checkRequest(String query) throws IOException {
     	try {
     		URL url = new URL(query);
     		HttpURLConnection con = (HttpURLConnection) url.openConnection();

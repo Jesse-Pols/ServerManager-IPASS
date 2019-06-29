@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import api from './components/backend-api'
-import cookie from './cookies'
+import cookies from './cookies'
 
 Vue.use(Vuex);
 
+// Hier wordt gecheckt of de inloggegevens kloppen.
 export default new Vuex.Store({
     state: {
         loginSuccess: false,
@@ -37,7 +38,8 @@ export default new Vuex.Store({
                                 userEmail: email,
                                 userPass: password
                             });
-                            cookie.setCookie("loggedIn", "True", 12);
+                            //cookie.setCookie("loggedIn", email, 12);
+                            cookies.setCookie("loggedIn", email, 12);
                         }
                         resolve(response)
                     })

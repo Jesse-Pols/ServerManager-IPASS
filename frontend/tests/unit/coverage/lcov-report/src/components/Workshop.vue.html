@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/ControlPanel.vue</title>
+    <title>Code coverage report for src/components/Workshop.vue</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="..\..\prettify.css" />
     <link rel="stylesheet" href="..\..\base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> ControlPanel.vue
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/components</a> Workshop.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/10</span>
       </div>
     </div>
   </div>
@@ -80,7 +80,38 @@
 35
 36
 37
-38</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -91,19 +122,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,40 +140,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-    &lt;div&gt;
-        &lt;DienstList ControlPanel&gt;&lt;/DienstList&gt;
+    &lt;div class="workshop"&gt;
+        &lt;DienstWorkshop v-bind:Wijzigen="Dienst.Wijzigen" v-bind:Aanmaken="Dienst.Aanmaken" v-bind:Value="Dienst.Value" v-if="Dienst.Aanmaken"&gt;&lt;/DienstWorkshop&gt;
+        &lt;DienstWorkshop v-bind:Wijzigen="Dienst.Wijzigen" v-bind:Aanmaken="Dienst.Aanmaken" v-bind:Value="Dienst.Value" v-if="Dienst.Wijzigen"&gt;&lt;/DienstWorkshop&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import api from './backend-api'</span>
-<span class="cstat-no" title="statement not covered" >import store from './../store'</span>
-<span class="cstat-no" title="statement not covered" >import DienstList from '@/components/modules/DienstList'</span>
+<span class="cstat-no" title="statement not covered" >import api from './backend-api';</span>
+<span class="cstat-no" title="statement not covered" >import DienstWorkshop from '@/components/modules/DienstWorkshop'</span>
 &nbsp;
 export default {
-    name: 'controlpanel',
-&nbsp;
-    components: {
-        DienstList
-    },
+    name: 'workshop',      
 &nbsp;
     data () {
 <span class="cstat-no" title="statement not covered" >        return {</span>
+            Dienst: {
+                Aanmaken: true,
+                Wijzigen: false,
+                Value: null
+            }
         }
-    }
+    },
 &nbsp;
+<span class="fstat-no" title="function not covered" >    created: function() {</span>
+        // This code runs right after the component is created, but before the template has been rendered
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var type = this.$route.params.wType;</span>
+<span class="cstat-no" title="statement not covered" >        var action = this.$route.params.wAction;</span>
+<span class="cstat-no" title="statement not covered" >        var value = this.$route.params.wValue;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (type == 'Dienst') {</span>
+<span class="cstat-no" title="statement not covered" >            this.Dienst.Aanmaken = (action == 'Aanmaken' ? true : false);</span>
+<span class="cstat-no" title="statement not covered" >            this.Dienst.Wijzigen = (action == 'Wijzigen' ? true : false);</span>
+<span class="cstat-no" title="statement not covered" >            if (value != null) this.Dienst.Value = value;</span>
+        }
+&nbsp;
+    },
+&nbsp;
+    components: {
+        DienstWorkshop
+    }
 }
 &lt;/script&gt;
 &nbsp;
 &lt;style&gt;
-&nbsp;
-#logsBtn {
-    padding: 10px;
-}
-&nbsp;
-#dienstAanmakenBtn {
-    padding: 10px;
-}
 &nbsp;
 &lt;/style&gt;
 &nbsp;</pre></td></tr>

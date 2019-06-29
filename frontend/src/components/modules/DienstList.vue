@@ -1,14 +1,21 @@
 <template>
 <div id="dienst_list">
+    <!-- Dit component haalt alle diensten uit de database, en toont ze in een overzichtelijke lijst. -->
+    <!-- Daarnaast wordt er bepaalt wat voor lijst het moet worden. -->
+    <!-- Als de lijst op de homepagina moet komen, dan moeten er sorteerknoppen bij komen te staan. -->
+    <!-- Als de lijst op het controlpanel moet komen, dan moeten er controlpanel relevante knoppen bij komen te staan -->
+    <!-- De diensten in de controlpanel-lijst zijn klikbaar, en verwijzen naar de dienstworkshop. -->
+
     <div class="buttons" v-if="Homepage">
-        <input type="button" @click="setSort('Studenten')" id="regButton" value="Studenten">
-        <input type="button" @click="setSort('Docenten')" id="regButton" value="Docenten">
-        <input type="button" @click="setSort('OP')" id="regButton" value="Onderwijsondersteunend Personeel">
+        <input type="button" @click="setSort('Studenten')" value="Studenten">
+        <input type="button" @click="setSort('Docenten')" value="Docenten">
+        <input type="button" @click="setSort('OP')" value="Onderwijsondersteunend Personeel">
         <input type="button" @click="check()" id="actionButton" value="Check">
     </div>
     <div class="buttons" v-if="ControlPanel">
-        <router-link to="/workshop/Dienst/Aanmaken"><input type="button" value="Nieuwe Dienst"></router-link>
+        <router-link :to="{ name: 'workshop_aanmaken', params: { wType: 'Dienst', wAction: 'Aanmaken' }}"><input type="button" value="Nieuwe Dienst"></router-link>
         <router-link to="/logs"><input type="button" value="Logs"></router-link>
+        <input type="button" @click="logOut()"  value="Uitloggen">
     </div>
     <div v-for="dienst in diensten" v-bind:key="dienst.id">
         <div class="card">
@@ -22,7 +29,7 @@
                     </h6>
                 </div>
                 <div class="controlPanelContent" v-if="ControlPanel">
-                    <router-link to="/dienst/Aanmaken">
+                    <router-link :to="{ name: 'workshop_wijzigen', params: { wType: 'Dienst', wAction: 'Wijzigen', wValue: dienst.name }}">
                         <h6 class="card-title">
                             {{ dienst.name }}
                         </h6>
@@ -39,6 +46,8 @@
 
 <script>
 import api from './../backend-api.js'
+import cookies from './../../cookies'
+import storage from './../../tempstore'
 
 export default {
     name: 'dienst_list',
@@ -61,21 +70,25 @@ export default {
 
     methods: {
         check: function() {
-            
-            // Empty the diensten list, so it can be refilled later
+
+            // Alle diensten worden uit de database gehaald, en de urls worden gecheckt op beschikbaarheid.
+            // Alle diensten worden in het this.diensten array gestopt, en automatisch getoond in de template.
+            // Deze functie kan wat langzamer zijn, afhankelijk van hoe snel de servers reageren op het request.
+            // Daarom worden de diensten nog extra opgeslagen in de sessionstorage, zodat we niet telkens deze functie hoeven uit te voeren.
+            // De key wordt niet opgeslagen in this.diensten, of in de sessionstorage.
+
+            // Allereerst wordt de huidige dienstenlijst geleegd.
             this.diensten = [];
 
-            api.status()
+            api.getDiensten ()
             .then(response => {
                 return response.data.Diensten;
             })
             .then(data => {
-                // GET Request succesful
                 for (let i = 0; i < data.length; i++) {
                     let obj = data[i];
                     this.diensten.push({
-                        id: obj.dienstId,
-                        key: obj.key,
+                        id: obj.id,
                         name: obj.name,
                         relevance: obj.relevance,
                         status: obj.status,
@@ -84,10 +97,11 @@ export default {
                 }
             })
             .then(data => {
+                // De dienstenlijst wordt na het uitvoeren nog even gesorteerd.
                 this.sort(this.diensten);
+                storage.set('diensten',this.diensten);
             })
             .catch(err => {
-                //GET Request failed
                 console.log(err);
             })
         },
@@ -96,14 +110,15 @@ export default {
 
             let switchTo = function (x) {
 
+                // Met de score wordt bepaalt welke diensten bovenaan de lijst komen te staan.
                 for (let i = 0; i < data.length; i++) {
 
                     let obj = data[i];
                     obj.score = 0;
 
-                    // Objects who are relevant to group x get a score of 2.
-                    // Objects who have no relevancy are equally relevant to all, and get a score of 1.
-                    // Objects who are relevant to someone, but not to group x, get a score of 0.
+                    // Objecten welke relevant zijn voor groep X krijgen een score van 2.
+                    // Objecten welke geen relevantie hebben zijn even relevant voor iedereen, en krijgen altijd een score van 1.
+                    // Objecten welke relevant zijn voor iemand, maar niet voor groep X, krijgen een score van 0.
 
                     if (obj.relevance == null)
                         obj.score += 1;
@@ -126,6 +141,11 @@ export default {
         setSort: function(id) {
             this.sortBy = id;
             this.check();
+        },
+
+        logOut: function() {
+            cookies.setCookie("loggedIn");
+            this.$router.push('/login')
         }
     }
 
@@ -143,7 +163,7 @@ export default {
 .card:hover {
     text-shadow: 0 0 2em rgba(255,255,255,1);
     border-color:#a2a2a2;
-    background-color:#f6f6f6;
+    background-color:#f8f8f8;
 }
 
 #dienst_list .buttons input[type=button] {
@@ -165,7 +185,8 @@ export default {
 
 #dienst_list .buttons input[type=button]:hover {
     text-shadow: 0 0 2em rgba(255,255,255,1);
-    border-color:#a2a2a2;
+    border-color:#626262;
+    background-color:#f8f8f8;
 }
 @media all and (max-width:30em) {
     #dienst_list .buttons input[type=button] {

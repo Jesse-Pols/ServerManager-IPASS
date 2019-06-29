@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- Alles in deze div is zichtbaar op elke pagina -->
     <div id="nav">
+      <!-- De navigatiebalk, bovenaan de pagina -->
       <router-link to="/">Home</router-link> |
       <router-link to="/login">Inloggen</router-link> |
       <router-link to="/controlpanel">Control Panel</router-link>

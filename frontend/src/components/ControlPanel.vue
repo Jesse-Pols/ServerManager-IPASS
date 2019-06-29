@@ -1,5 +1,7 @@
 <template>
     <div>
+        <!-- In de dienstlist staan niet alleen diensten, maar ook buttons.
+        In dit geval worden alle buttons gerelateerd aan de controlpanel getoont -->
         <DienstList ControlPanel></DienstList>
     </div>
 </template>

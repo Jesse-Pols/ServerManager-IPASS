@@ -5,10 +5,14 @@ const AXIOS = axios.create({
   baseURL: `/api`
 });
 
-
+// Met behulp van AXIOS worden alle request doorgestuurd naar de backend.
+// Om een request uit te voeren moet dit bestand geimporteerd worden.
 export default {
-    status() {
-        return AXIOS.get('/status');
+    getDiensten() {
+        return AXIOS.get('/dienst/get');
+    },
+    getKeyById(id) {
+        return AXIOS.get('/dienst/get/' + id);
     },
     createDienst(dienst) {
         return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key);
