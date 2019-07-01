@@ -20,6 +20,12 @@ export default {
     createDienstWithRelevance(dienst) {
     	return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);
     },
+    updateDienst(id, dienst) {
+        return AXIOS.post('/dienst/update/' + id + '/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);
+    },
+    deleteDienst(id) {
+        return AXIOS.post('/dienst/delete/' + id);
+    },
     getSecured(user, password) {
         return AXIOS.get('/secured/', {
             auth: {

@@ -6,6 +6,7 @@
     <!-- Als de lijst op het controlpanel moet komen, dan moeten er controlpanel relevante knoppen bij komen te staan -->
     <!-- De diensten in de controlpanel-lijst zijn klikbaar, en verwijzen naar de dienstworkshop. -->
 
+    <!-- BUTTONS -->
     <div class="buttons" v-if="Homepage">
         <input type="button" @click="setSort('Studenten')" value="Studenten">
         <input type="button" @click="setSort('Docenten')" value="Docenten">
@@ -17,6 +18,8 @@
         <router-link to="/logs"><input type="button" value="Logs"></router-link>
         <input type="button" @click="logOut()"  value="Uitloggen">
     </div>
+
+    <!-- LIST -->
     <div v-for="dienst in diensten" v-bind:key="dienst.id">
         <div class="card">
             <div class="card-body">
@@ -38,6 +41,16 @@
                         </h6>
                     </router-link>                    
                 </div>
+                <div class="logContent" v-if="Logs">
+                    <router-link to="/log">
+                        <h6 class="card-title">
+                            {{ dienst.name }}
+                        </h6>
+                        <h6 class="card-text">
+                            {{ dienst.status }}
+                        </h6>
+                    </router-link>
+                </div>
             </div>
         </div>
     </div>
@@ -54,7 +67,8 @@ export default {
 
     props: {
         Homepage: Boolean,
-        ControlPanel: Boolean
+        ControlPanel: Boolean,
+        Logs: Boolean
     },
 
     mounted: function() {

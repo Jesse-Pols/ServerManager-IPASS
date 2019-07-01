@@ -4,8 +4,7 @@
     <div id="nav">
       <!-- De navigatiebalk, bovenaan de pagina -->
       <router-link to="/">Home</router-link> |
-      <router-link to="/login">Inloggen</router-link> |
-      <router-link to="/controlpanel">Control Panel</router-link>
+      <router-link to="/controlpanel">Control Panel</router-link> |
     </div>
     <router-view :key="$route.fullPath"></router-view>
   </div>

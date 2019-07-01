@@ -79,6 +79,25 @@ public class BackendController {
         return dodi.save(dienst);
     }
 
+    @RequestMapping(path = "/dienst/delete/{id}")
+    public @ResponseBody boolean deleteDienst(@PathVariable("id") int id) {
+        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
+        Dienst dienst = new Dienst(id);
+        dodi.delete(dienst);
+        return true;
+    }
+
+    @RequestMapping(path = "/dienst/update/{id}/{name}/{key}/{relevance}")
+    public @ResponseBody boolean updateDienst(@PathVariable("id") int id, @PathVariable("name") String name, @PathVariable("key") String key, @PathVariable("relevance") String relevance) {
+        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
+        Dienst dienst = new Dienst(id, name, key);        
+        if (!relevance.contains("None")) dienst.setRelevance(relevance);
+
+        dodi.update(dienst);
+        return true;
+    }
+
+
     @RequestMapping(path = "/secured", method = RequestMethod.GET)
     public @ResponseBody String getSecured() {
         LOG.info("GET successfully called on /secured resource");

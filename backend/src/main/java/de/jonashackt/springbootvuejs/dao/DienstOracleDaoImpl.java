@@ -74,6 +74,45 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 		return true;
 		
 	}
+
+	public boolean update(Dienst dienst) {
+
+		System.out.println(dienst);
+
+		try {
+			
+			ps = dbConnection.prepareStatement(
+					"UPDATE dienst SET name=?, key=?, relevance=? WHERE id=?");
+			ps.setString(1, dienst.getName());
+			ps.setString(2, dienst.getKey());
+			ps.setString(3, dienst.getRelevance());
+			ps.setInt(4, dienst.getId());
+			ps.executeQuery();
+			ps.close();
+
+		} catch (Exception ex)
+		{ System.out.println(BASE_URL + ".change() Failed: " + ex); return false; }
+
+		return true;
+
+	}
+
+	public boolean delete(Dienst dienst) {
+
+		try {
+
+			ps = dbConnection.prepareStatement(
+					"DELETE FROM dienst WHERE id=?");
+			ps.setInt(1, dienst.getId());
+			ps.executeQuery();
+			ps.close();
+
+		} catch (Exception ex)
+		{ System.out.println(BASE_URL + ".delete() Failed: " + ex); return false; }
+
+		return true;
+
+	}
 	
     /*
 	private static final String BASE_URL = "nl.hu.ipass.servermanager.dao.DienstOracleDaoImpl.java";

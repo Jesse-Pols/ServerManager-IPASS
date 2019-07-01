@@ -13,6 +13,10 @@ public class Dienst {
 		this.name = name;
 	}
 	
+	public Dienst(int id) {
+		this.id = id;
+	}
+	
 	public Dienst(String name, String key) {
 		this.name = name;
 		this.key = key;
@@ -22,6 +26,12 @@ public class Dienst {
 		this.name = name;
 		this.key = key;
 		this.relevance = relevance;
+	}
+	
+	public Dienst(int id, String name, String key) {
+		this.id = id;
+		this.name = name;
+		this.key = key;
 	}
 	
 	public Dienst(int id, String name, String key, String relevance) {

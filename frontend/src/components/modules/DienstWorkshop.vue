@@ -19,13 +19,33 @@
         <label for="op_checkbox">&nbsp;Onderwijsondersteunend Personeel</label><br><br>
 
         <button @click="createDienst()" v-if="Aanmaken">Aanmaken</button>
-        <button @click="changeDienst()" v-if="Wijzigen">Wijzigen</button>
+        <button @click="updateDienst()" v-if="Wijzigen">Wijzigen</button>
+        <button @click="showModal = true" v-if="Wijzigen">Verwijderen</button>
+
+        <!-- Een check of de gebruiker zeker weet dat hij de dienst wilt verwijderen. -->
+        <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">
+                Weet u het zeker?
+            </h3>
+            <h5 slot="body">
+                <h5>U staat op het punt om de dienst <b>'{{ savedDienst.name }}'</b> te verwijderen.</h5>
+            </h5>
+            <p slot="footer" id="actual-footer">
+                <button class="modal-alert-button" @click="deleteDienst()">
+                    Verwijderen
+                </button>
+                <button class="modal-default-button" @click="showModal = false">
+                    Terug
+                </button>
+            </p>
+        </modal>
     </div>
 </template>
 
 <script>
 import api from './../backend-api'
 import storage from './../../tempstore'
+import Modal from '@/components/modules/Modal'
 
 export default {
     name: 'dienst_workshop',
@@ -36,12 +56,24 @@ export default {
         Value: String
     },
 
+    components: {
+        Modal
+    },
+
     data () {
         return {
+            showModal: false,
+            savedDienst: {
+                id: 0,
+                name: '',
+                key: '',
+                relevance: ''
+            },
             dienst: {
                 id: 0,
                 name: '',
-                key: ''
+                key: '',
+                relevance: ''
             },
             checkBoxes: {
                 Studenten: false,
@@ -76,10 +108,12 @@ export default {
             this.dienst.name = obj.name;
             this.dienst.relevance = obj.relevance;
 
-            // De checkboxes worden eventueel aangevinkt.
-            if (obj.relevance.includes('Studenten')) this.checkBoxes.Studenten = true;
-            if (obj.relevance.includes('Docenten')) this.checkBoxes.Docenten = true;
-            if (obj.relevance.includes('OP')) this.checkBoxes.OP = true;
+            // De checkboxes worden eventueel aangevinkt.`
+            if (obj.relevance != null) {
+                if (obj.relevance.includes('Studenten')) this.checkBoxes.Studenten = true;
+                if (obj.relevance.includes('Docenten')) this.checkBoxes.Docenten = true;
+                if (obj.relevance.includes('OP')) this.checkBoxes.OP = true;
+            }
 
             // De key wordt uit de database gehaald.
             api.getKeyById(obj.id)
@@ -90,24 +124,82 @@ export default {
                 console.log(err);
             });
 
+            // this.dienst veranderdt op basis van wat er in de tekstvelden staat.
+            // this.savedDienst kan niet veranderen.
+            this.savedDienst = this.dienst;
+
         }
     },
 
     methods: {
-        createDienst: function() {
+        checkRelevance: function() {
 
-            let addString = function(x) {
-                
+            let addToString = function(str, x) {
+                if (str != "") str += ",";
+                str += x;
+                return str;
             }
 
-            api.createDienst(this.dienst)
+            let checkThis = function(rel, check) {
+                if (check.Studenten) rel = addToString(rel, 'Studenten');
+                if (check.Docenten) rel = addToString(rel, 'Docenten');
+                if (check.OP) rel = addToString(rel, 'OP');
+                return rel;
+            }
+
+            this.dienst.relevance = checkThis("", this.checkBoxes);
+
+        },
+
+        createDienst: function() {
+
+            this.checkRelevance();         
+            if (this.dienst.relevance != "") {
+                api.createDienstWithRelevance(this.dienst)
+                .then(response => {
+                    console.log(response);
+                    this.$router.push('/controlpanel')
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            } else {
+                api.createDienst(this.dienst)
+                .then(response => {
+                    console.log(response);
+                    this.$router.push('/controlpanel')
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
+        },
+
+        updateDienst: function() {
+
+            this.checkRelevance();
+            if (this.dienst.relevance == "") this.dienst.relevance = "None";
+            console.log(this.dienst.relevance);
+            api.updateDienst(this.savedDienst.id, this.dienst)
             .then(response => {
                 console.log(response);
+                this.$router.push('/controlpanel');
             })
-            .catch(e => {
-                console.log(e);
+            .catch(err => {
+                console.log(err);
             })
+        },
 
+        deleteDienst: function() {
+            api.deleteDienst(this.savedDienst.id)
+            .then(response => {
+                console.log(response);
+                this.$router.push('/controlpanel')
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            this.showModal = false;
         }
     }
 
@@ -116,8 +208,24 @@ export default {
 
 <style scoped>
 
+.dienst-info {
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .dienst_workshop textarea {
     width: 20em;
+}
+
+#actual-footer {
+    width: 100%;
 }
 
 </style>    
