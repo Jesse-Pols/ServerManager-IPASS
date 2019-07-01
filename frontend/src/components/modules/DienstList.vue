@@ -23,6 +23,8 @@
     <div v-for="dienst in diensten" v-bind:key="dienst.id">
         <div class="card">
             <div class="card-body">
+
+                <!-- Home Page -->
                 <div class="homepageContent" v-if="Homepage">
                     <h6 class="card-title">
                         {{ dienst.name }}
@@ -31,6 +33,8 @@
                         {{ dienst.status }}
                     </h6>
                 </div>
+
+                <!-- Control Panel -->
                 <div class="controlPanelContent" v-if="ControlPanel">
                     <router-link :to="{ name: 'workshop_wijzigen', params: { wType: 'Dienst', wAction: 'Wijzigen', wValue: dienst.name }}">
                         <h6 class="card-title">
@@ -41,8 +45,10 @@
                         </h6>
                     </router-link>                    
                 </div>
+
+                <!-- Logs -->
                 <div class="logContent" v-if="Logs">
-                    <router-link to="/log">
+                    <router-link to="/logs/123">
                         <h6 class="card-title">
                             {{ dienst.name }}
                         </h6>

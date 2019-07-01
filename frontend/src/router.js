@@ -5,6 +5,7 @@ import Workshop from '@/components/Workshop'
 import Login from '@/components/Login'
 import ControlPanel from '@/components/ControlPanel'
 import Logs from '@/components/Logs'
+import Log from '@/components/Log'
 
 import cookies from './cookies';
 
@@ -28,6 +29,12 @@ const router = new Router({
             component: Workshop,
             meta: { requiresAuth: true },
             name: 'workshop_aanmaken'
+        },
+        {
+            path: '/logs/:lId',
+            component: Log,
+            meta: { requiresAuth: true },
+            name: 'log'
         },
         { path: '/logs', component: Logs },
         { path: '*', redirect: '/' }
