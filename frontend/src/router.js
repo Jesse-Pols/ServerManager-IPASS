@@ -5,7 +5,7 @@ import Workshop from '@/components/Workshop'
 import Login from '@/components/Login'
 import ControlPanel from '@/components/ControlPanel'
 import Logs from '@/components/Logs'
-import Log from '@/components/Log'
+import Log from '@/components/modules/Log'
 
 import cookies from './cookies';
 
