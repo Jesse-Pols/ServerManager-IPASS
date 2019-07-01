@@ -176,10 +176,14 @@ export default {
         },
 
         updateDienst: function() {
+            
+            if (this.dienst.name == '' || this.dienst.key == '') {
+                alert("Laat geen velden leeg alstublieft.")
+                return;
+            }
 
             this.checkRelevance();
             if (this.dienst.relevance == "") this.dienst.relevance = "None";
-            console.log(this.dienst.relevance);
             api.updateDienst(this.savedDienst.id, this.dienst)
             .then(response => {
                 console.log(response);
