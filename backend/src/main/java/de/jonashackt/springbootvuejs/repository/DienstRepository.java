@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DienstRepository extends CrudRepository<Dienst, Long> {
 
-    List<Dienst> findByLastName(@Param("name") String name);
+    List<Dienst> findByLastName(@Param("key") String key);
 
     List<Dienst> findByFirstName(@Param("name") String name);
 
