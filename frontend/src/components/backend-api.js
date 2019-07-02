@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Axios from 'axios';
 
-const AXIOS = axios.create({
+export const AXIOS = axios.create({
   baseURL: `/api`
 });
 
