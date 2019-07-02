@@ -1,5 +1,10 @@
 package de.jonashackt.springbootvuejs.repository;
 
+public class DienstRepositoryTest {
+
+}
+ /*
+
 import de.jonashackt.springbootvuejs.domain.Dienst;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,3 +60,4 @@ public class DienstRepositoryTest {
     }
 
 }
+*/
