@@ -5,7 +5,6 @@
       <!-- De navigatiebalk, bovenaan de pagina -->
       <router-link to="/">Home</router-link> |
       <router-link to="/controlpanel">Control Panel</router-link> |
-      <router-link to="/sample">Sample</router-link>
     </div>
     <router-view :key="$route.fullPath"></router-view>
   </div>
