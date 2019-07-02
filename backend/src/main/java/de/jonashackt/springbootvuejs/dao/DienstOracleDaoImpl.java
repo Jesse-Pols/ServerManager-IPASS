@@ -10,6 +10,7 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 	private static final String BASE_URL = "de.jonashackt.springbootvuejs.dao.DienstOracleDaoImpl.java";
 	
 	public List<Dienst> findAll() {
+		System.out.println("Searching...");
 		List<Dienst> diensten = new ArrayList<Dienst>();
 		
 		try {
@@ -18,12 +19,16 @@ public class DienstOracleDaoImpl extends OracleBaseDao {
 					"SELECT id, name, key, relevance FROM dienst");
 			rs = ps.executeQuery();
 			
+			System.out.println("Found something?");
+			
 			while (rs.next()) {
 				Dienst dienst = new Dienst(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				if (rs.getString(4) != null)
 					dienst.setRelevance(rs.getString(4));
 				diensten.add(dienst);
 			}
+			
+			System.out.println("Jep");
 			rs.close();
 			ps.close();
 			
