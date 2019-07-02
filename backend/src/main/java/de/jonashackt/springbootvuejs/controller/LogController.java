@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/logs")
-public class LogController {
+public class LogController extends BackendController {
 	
 	@RequestMapping(path = "/logs/get")
 	public @ResponseBody String getAll() {

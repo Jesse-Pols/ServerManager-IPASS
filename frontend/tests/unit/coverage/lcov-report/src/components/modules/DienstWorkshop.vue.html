@@ -22,22 +22,22 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/51</span>
+        <span class='fraction'>0/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/24</span>
+        <span class='fraction'>0/34</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/51</span>
+        <span class='fraction'>0/47</span>
       </div>
     </div>
   </div>
@@ -269,11 +269,7 @@
 224
 225
 226
-227
-228
-229
-230
-231</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+227</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -424,6 +420,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -433,16 +438,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -455,9 +450,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -468,7 +461,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -654,40 +646,37 @@ export default {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            this.dienst.relevance = checkThis("", this.checkBoxes);</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >            if (this.dienst.relevance == '') return false;</span>
+            else return true;
+&nbsp;
+        },
+&nbsp;
+<span class="fstat-no" title="function not covered" >        checkFields: function() {</span>
+<span class="cstat-no" title="statement not covered" >            if (this.dienst.name == '' || this.dienst.key == '') {</span>
+<span class="cstat-no" title="statement not covered" >                alert("Laat geen velden leeg alstublieft."); return false;</span>
+<span class="cstat-no" title="statement not covered" >            } else return true;</span>
         },
 &nbsp;
 <span class="fstat-no" title="function not covered" >        createDienst: function() {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.checkRelevance();         </span>
-<span class="cstat-no" title="statement not covered" >            if (this.dienst.relevance != "") {</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                api.createDienstWithRelevance(this.dienst)</span></span>
-                .then(response =&gt; {
-<span class="cstat-no" title="statement not covered" >                    console.log(response);</span>
-<span class="cstat-no" title="statement not covered" >                    this.$router.push('/controlpanel')</span>
-<span class="fstat-no" title="function not covered" >                })</span>
-                .catch(err =&gt; {
-<span class="cstat-no" title="statement not covered" >                    console.log(err);</span>
-                })
-            } else {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                api.createDienst(this.dienst)</span></span>
-                .then(response =&gt; {
-<span class="cstat-no" title="statement not covered" >                    console.log(response);</span>
-<span class="cstat-no" title="statement not covered" >                    this.$router.push('/controlpanel')</span>
-<span class="fstat-no" title="function not covered" >                })</span>
-                .catch(err =&gt; {
-<span class="cstat-no" title="statement not covered" >                    console.log(err);</span>
-                })
-            }
+<span class="cstat-no" title="statement not covered" >            if (!this.checkFields()) return;</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.checkRelevance()) this.dienst.relevance = 'None';</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            api.createDienst(this.dienst)</span></span>
+            .then(response =&gt; {
+<span class="cstat-no" title="statement not covered" >                this.$router.push('/controlpanel');</span>
+<span class="fstat-no" title="function not covered" >            })</span>
+            .catch(err =&gt; {
+<span class="cstat-no" title="statement not covered" >                console.log(err);</span>
+            })
+&nbsp;
         },
 &nbsp;
 <span class="fstat-no" title="function not covered" >        updateDienst: function() {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.checkRelevance();</span>
-<span class="cstat-no" title="statement not covered" >            if (this.dienst.relevance == "") this.dienst.relevance = "None";</span>
-<span class="cstat-no" title="statement not covered" >            console.log(this.dienst.relevance);</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.checkFields()) return;</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.checkRelevance()) this.dienst.relevance = 'None';</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            api.updateDienst(this.savedDienst.id, this.dienst)</span></span>
             .then(response =&gt; {
-<span class="cstat-no" title="statement not covered" >                console.log(response);</span>
 <span class="cstat-no" title="statement not covered" >                this.$router.push('/controlpanel');</span>
 <span class="fstat-no" title="function not covered" >            })</span>
             .catch(err =&gt; {
@@ -698,7 +687,6 @@ export default {
 <span class="fstat-no" title="function not covered" >        deleteDienst: function() {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            api.deleteDienst(this.savedDienst.id)</span></span>
             .then(response =&gt; {
-<span class="cstat-no" title="statement not covered" >                console.log(response);</span>
 <span class="cstat-no" title="statement not covered" >                this.$router.push('/controlpanel')</span>
 <span class="fstat-no" title="function not covered" >            })</span>
             .catch(err =&gt; {
@@ -739,7 +727,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 01 2019 18:30:24 GMT+0200 (Central European Summer Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jul 02 2019 10:51:25 GMT+0200 (Central European Summer Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

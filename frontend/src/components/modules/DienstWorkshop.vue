@@ -149,44 +149,37 @@ export default {
 
             this.dienst.relevance = checkThis("", this.checkBoxes);
 
+            if (this.dienst.relevance == '') return false;
+            else return true;
+
+        },
+
+        checkFields: function() {
+            if (this.dienst.name == '' || this.dienst.key == '') {
+                alert("Laat geen velden leeg alstublieft."); return false;
+            } else return true;
         },
 
         createDienst: function() {
 
-            this.checkRelevance();         
-            if (this.dienst.relevance != "") {
-                api.createDienstWithRelevance(this.dienst)
-                .then(response => {
-                    console.log(response);
-                    this.$router.push('/controlpanel')
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-            } else {
-                api.createDienst(this.dienst)
-                .then(response => {
-                    console.log(response);
-                    this.$router.push('/controlpanel')
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-            }
+            if (!this.checkFields()) return;
+            if (!this.checkRelevance()) this.dienst.relevance = 'None';
+            api.createDienst(this.dienst)
+            .then(response => {
+                this.$router.push('/controlpanel');
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
         },
 
         updateDienst: function() {
-            
-            if (this.dienst.name == '' || this.dienst.key == '') {
-                alert("Laat geen velden leeg alstublieft.")
-                return;
-            }
 
-            this.checkRelevance();
-            if (this.dienst.relevance == "") this.dienst.relevance = "None";
+            if (!this.checkFields()) return;
+            if (!this.checkRelevance()) this.dienst.relevance = 'None';
             api.updateDienst(this.savedDienst.id, this.dienst)
             .then(response => {
-                console.log(response);
                 this.$router.push('/controlpanel');
             })
             .catch(err => {
@@ -197,7 +190,6 @@ export default {
         deleteDienst: function() {
             api.deleteDienst(this.savedDienst.id)
             .then(response => {
-                console.log(response);
                 this.$router.push('/controlpanel')
             })
             .catch(err => {

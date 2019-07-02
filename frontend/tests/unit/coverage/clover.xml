@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1561998625078" clover="3.2.0">
-  <project timestamp="1561998625078" name="All files">
-    <metrics statements="167" coveredstatements="0" conditionals="48" coveredconditionals="0" methods="42" coveredmethods="0" elements="257" coveredelements="0" complexity="0" loc="167" ncloc="167" packages="3" files="12" classes="12">
+<coverage generated="1562057485754" clover="3.2.0">
+  <project timestamp="1562057485754" name="All files">
+    <metrics statements="156" coveredstatements="0" conditionals="58" coveredconditionals="0" methods="38" coveredmethods="0" elements="252" coveredelements="0" complexity="0" loc="156" ncloc="156" packages="3" files="10" classes="10">
       <package name="src">
         <metrics statements="51" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <file name="cookies.js" path="D:\School\IPASS\IPASS-Project\frontend\src\cookies.js">
@@ -66,7 +66,7 @@
         </file>
       </package>
       <package name="src.components">
-        <metrics statements="34" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="31" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="ControlPanel.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\ControlPanel.vue">
           <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="10" count="0" type="stmt"/>
@@ -89,11 +89,6 @@
           <line num="41" count="0" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
         </file>
-        <file name="Logs.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\Logs.vue">
-          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-          <line num="11" count="0" type="stmt"/>
-          <line num="12" count="0" type="stmt"/>
-        </file>
         <file name="Workshop.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\Workshop.vue">
           <metrics statements="10" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
           <line num="10" count="0" type="stmt"/>
@@ -108,7 +103,7 @@
           <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         </file>
         <file name="backend-api.js" path="D:\School\IPASS\IPASS-Project\frontend\src\components\backend-api.js">
-          <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
           <line num="12" count="0" type="stmt"/>
@@ -117,43 +112,42 @@
           <line num="21" count="0" type="stmt"/>
           <line num="24" count="0" type="stmt"/>
           <line num="27" count="0" type="stmt"/>
-          <line num="30" count="0" type="stmt"/>
         </file>
       </package>
       <package name="src.components.modules">
-        <metrics statements="82" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="31" coveredmethods="0"/>
+        <metrics statements="74" coveredstatements="0" conditionals="38" coveredconditionals="0" methods="27" coveredmethods="0"/>
         <file name="DienstList.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\modules\DienstList.vue">
           <metrics statements="27" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="0"/>
-          <line num="67" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
           <line num="68" count="0" type="stmt"/>
-          <line num="69" count="0" type="stmt"/>
-          <line num="81" count="0" type="stmt"/>
-          <line num="85" count="0" type="stmt"/>
-          <line num="101" count="0" type="stmt"/>
-          <line num="103" count="0" type="stmt"/>
-          <line num="105" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="95" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
           <line num="108" count="0" type="stmt"/>
           <line num="109" count="0" type="stmt"/>
-          <line num="110" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="118" count="0" type="stmt"/>
           <line num="121" count="0" type="stmt"/>
-          <line num="122" count="0" type="stmt"/>
-          <line num="125" count="0" type="stmt"/>
-          <line num="131" count="0" type="stmt"/>
-          <line num="134" count="0" type="stmt"/>
-          <line num="136" count="0" type="stmt"/>
-          <line num="137" count="0" type="stmt"/>
-          <line num="143" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="146" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="153" count="0" type="stmt"/>
+          <line num="123" count="0" type="stmt"/>
+          <line num="124" count="0" type="stmt"/>
+          <line num="130" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="133" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="140" count="0" type="stmt"/>
+          <line num="142" count="0" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+          <line num="149" count="0" type="stmt"/>
+          <line num="150" count="0" type="stmt"/>
+          <line num="154" count="0" type="stmt"/>
           <line num="155" count="0" type="stmt"/>
-          <line num="156" count="0" type="stmt"/>
-          <line num="162" count="0" type="stmt"/>
-          <line num="163" count="0" type="stmt"/>
-          <line num="167" count="0" type="stmt"/>
-          <line num="168" count="0" type="stmt"/>
         </file>
         <file name="DienstWorkshop.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\modules\DienstWorkshop.vue">
-          <metrics statements="51" coveredstatements="0" conditionals="24" coveredconditionals="0" methods="17" coveredmethods="0"/>
+          <metrics statements="47" coveredstatements="0" conditionals="34" coveredconditionals="0" methods="16" coveredmethods="0"/>
           <line num="46" count="0" type="stmt"/>
           <line num="47" count="0" type="stmt"/>
           <line num="48" count="0" type="stmt"/>
@@ -183,35 +177,24 @@
           <line num="146" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="147" count="0" type="stmt"/>
           <line num="150" count="0" type="stmt"/>
-          <line num="156" count="0" type="stmt"/>
-          <line num="157" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="158" count="0" type="stmt"/>
+          <line num="152" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="158" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="159" count="0" type="stmt"/>
           <line num="160" count="0" type="stmt"/>
-          <line num="161" count="0" type="stmt"/>
-          <line num="164" count="0" type="stmt"/>
+          <line num="165" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="166" count="0" type="cond" truecount="0" falsecount="2"/>
           <line num="167" count="0" type="stmt"/>
           <line num="169" count="0" type="stmt"/>
-          <line num="170" count="0" type="stmt"/>
-          <line num="173" count="0" type="stmt"/>
-          <line num="180" count="0" type="stmt"/>
-          <line num="181" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="182" count="0" type="stmt"/>
+          <line num="172" count="0" type="stmt"/>
+          <line num="179" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="180" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="181" count="0" type="stmt"/>
           <line num="183" count="0" type="stmt"/>
-          <line num="185" count="0" type="stmt"/>
           <line num="186" count="0" type="stmt"/>
-          <line num="189" count="0" type="stmt"/>
-          <line num="194" count="0" type="stmt"/>
+          <line num="191" count="0" type="stmt"/>
+          <line num="193" count="0" type="stmt"/>
           <line num="196" count="0" type="stmt"/>
-          <line num="197" count="0" type="stmt"/>
-          <line num="200" count="0" type="stmt"/>
-          <line num="202" count="0" type="stmt"/>
-        </file>
-        <file name="Log.vue" path="D:\School\IPASS\IPASS-Project\frontend\src\components\modules\Log.vue">
-          <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-          <line num="10" count="0" type="stmt"/>
-          <line num="19" count="0" type="stmt"/>
-          <line num="23" count="0" type="stmt"/>
-          <line num="30" count="0" type="stmt"/>
+          <line num="198" count="0" type="stmt"/>
         </file>
       </package>
     </metrics>

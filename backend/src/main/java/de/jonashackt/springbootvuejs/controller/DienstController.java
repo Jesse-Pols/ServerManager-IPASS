@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.jonashackt.springbootvuejs.dao.DienstOracleDaoImpl;
 import de.jonashackt.springbootvuejs.domain.Dienst;
 
 @RestController()
@@ -23,13 +23,12 @@ public class DienstController extends BackendController {
 	@RequestMapping(path = "/get")
 	public @ResponseBody JSONObject getDiensten() {
 		
-        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
         List<Dienst> diensten = dodi.findAll(); 
         JSONObject jsonObject = new JSONObject();
 
         try {
             for (Dienst dienst : diensten) {
-                // boolean content = this.checkRequest(dienst.getKey());
+                //boolean content = this.checkRequest(dienst.getKey());
                 boolean content = true;
                 if (content) dienst.setStatus("Beschikbaar");
                 else dienst.setStatus("Niet Beschikbaar");
@@ -46,50 +45,30 @@ public class DienstController extends BackendController {
 	/* GET KEY BY ID */
     @RequestMapping (path = "/get/{id}", method = RequestMethod.GET)
     public @ResponseBody String getKeyById(@PathVariable("id") int id) {
-        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
         return dodi.findKeyById(id);
     }
     
     /* CREATE */    
-    @RequestMapping(path = "/create/{name}/{key}", method = RequestMethod.POST)
-    public @ResponseBody boolean createDienstNoRelevance(@PathVariable("name") String name, @PathVariable("key") String key) {
-    	return createDienst(name, key, null);
-    }
-    
-    @RequestMapping(path = "/create/{name}/{key}/{relevance}", method = RequestMethod.POST)
-    public @ResponseBody boolean createDienstNoRelevance(@PathVariable("name") String name, @PathVariable("key") String key, @PathVariable("relevance") String relevance) {
-    	return createDienst(name, key, relevance);
-    }    
-    
-    public boolean createDienst(String name, String key, String relevance) {
-        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
+    @RequestMapping(path = "/create")
+    public @ResponseBody boolean createDienst(@RequestHeader("dienst-name") String name, @RequestHeader("dienst-key") String key, @RequestHeader("dienst-relevance") String relevance) {
         Dienst dienst = new Dienst(name, key);
-        if (relevance != null) {
-            dienst.setRelevance(relevance);
-        }
-
-        System.out.println(dienst);
+        if (!relevance.contains("None")) dienst.setRelevance(relevance);
         return dodi.save(dienst);
     }
     
     /* DELETE */
     @RequestMapping(path = "/delete/{id}")
     public @ResponseBody boolean deleteDienst(@PathVariable("id") int id) {
-        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
         Dienst dienst = new Dienst(id);
-        dodi.delete(dienst);
-        return true;
+        return dodi.delete(dienst);
     }
     
     /* UPDATE */
-    @RequestMapping(path = "/update/{id}/{name}/{key}/{relevance}")
-    public @ResponseBody boolean updateDienst(@PathVariable("id") int id, @PathVariable("name") String name, @PathVariable("key") String key, @PathVariable("relevance") String relevance) {
-        DienstOracleDaoImpl dodi = new DienstOracleDaoImpl();
+    @RequestMapping(path = "/update/{id}")
+    public @ResponseBody boolean updateDienst(@PathVariable("id") int id, @RequestHeader("dienst-key") String key, @RequestHeader("dienst-name") String name, @RequestHeader("dienst-relevance") String relevance) {
         Dienst dienst = new Dienst(id, name, key);        
         if (!relevance.contains("None")) dienst.setRelevance(relevance);
-
-        dodi.update(dienst);
-        return true;
+        return dodi.update(dienst);
     }
     
     

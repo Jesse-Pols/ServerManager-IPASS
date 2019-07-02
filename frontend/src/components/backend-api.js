@@ -15,13 +15,16 @@ export default {
         return AXIOS.get('/dienst/get/' + id);
     },
     createDienst(dienst) {
-        return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key);
-    },
-    createDienstWithRelevance(dienst) {
-    	return AXIOS.post('/dienst/create/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);
+        AXIOS.defaults.headers.post['dienst-key'] = dienst.key;
+        AXIOS.defaults.headers.post['dienst-name'] = dienst.name;
+        AXIOS.defaults.headers.post['dienst-relevance'] = dienst.relevance;
+        return AXIOS.post('/dienst/create');
     },
     updateDienst(id, dienst) {
-        return AXIOS.post('/dienst/update/' + id + '/' + dienst.name + '/' + dienst.key + '/' + dienst.relevance);
+        AXIOS.defaults.headers.post['dienst-name'] = dienst.name;
+        AXIOS.defaults.headers.post['dienst-key'] = dienst.key;
+        AXIOS.defaults.headers.post['dienst-relevance'] = dienst.relevance;
+        return AXIOS.post('/dienst/update/' + id);
     },
     deleteDienst(id) {
         return AXIOS.post('/dienst/delete/' + id);

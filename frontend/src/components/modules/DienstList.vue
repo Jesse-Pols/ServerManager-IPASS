@@ -15,7 +15,7 @@
     </div>
     <div class="buttons" v-if="ControlPanel">
         <router-link :to="{ name: 'workshop_aanmaken', params: { wType: 'Dienst', wAction: 'Aanmaken' }}"><input type="button" value="Nieuwe Dienst"></router-link>
-        <router-link to="/logs"><input type="button" value="Logs"></router-link>
+         <!-- <router-link to="/logs"><input type="button" value="Logs"></router-link> -->
         <input type="button" @click="logOut()"  value="Uitloggen">
     </div>
 
@@ -45,18 +45,6 @@
                         </h6>
                     </router-link>                    
                 </div>
-
-                <!-- Logs -->
-                <div class="logContent" v-if="Logs">
-                    <router-link to="/logs/123">
-                        <h6 class="card-title">
-                            {{ dienst.name }}
-                        </h6>
-                        <h6 class="card-text">
-                            {{ dienst.status }}
-                        </h6>
-                    </router-link>
-                </div>
             </div>
         </div>
     </div>
@@ -73,8 +61,7 @@ export default {
 
     props: {
         Homepage: Boolean,
-        ControlPanel: Boolean,
-        Logs: Boolean
+        ControlPanel: Boolean
     },
 
     mounted: function() {
