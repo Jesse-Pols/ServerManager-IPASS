@@ -1,56 +1,64 @@
 package de.jonashackt.springbootvuejs.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "diensten")
 public class Dienst {
 
+	// Primary Key
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name, key, status, relevance;
+
 	// Status isn't saved in the database
 	// Relevance tells us which usergroup would be most interested in this Dienst
 	
 	public Dienst() { }
-	
-	public Dienst(String name) {		
-		this.name = name;
-	}
-	
+
 	public Dienst(int id) {
 		this.id = id;
 	}
-	
-	public Dienst(String name, String key) {
-		this.name = name;
-		this.key = key;
-	}
-	
-	public Dienst(String name, String key, String relevance) {
-		this.name = name;
-		this.key = key;
-		this.relevance = relevance;
-	}
-	
+
 	public Dienst(int id, String name, String key) {
 		this.id = id;
 		this.name = name;
 		this.key = key;
 	}
-	
+
 	public Dienst(int id, String name, String key, String relevance) {
 		this.id = id;
 		this.name = name;
 		this.key = key;
 		this.relevance = relevance;
 	}
-	
-	public int getId() {
-		return id;
+
+	public Dienst(String name, String key) {
+		this.name = name;
+		this.key = key;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Dienst(String name, String key, String relevance) {
+		this.name = name;
+		this.key = key;
+		this.relevance = relevance;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+			"Dienst[id=%d, name='%s', key='%s', relevance='%s']",
+			id, name, key, relevance
+		);
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -58,37 +66,35 @@ public class Dienst {
 	}
 
 	public String getKey() {
-		return key;
+		return this.key;
 	}
 
 	public void setKey(String key) {
 		this.key = key;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getRelevance() {
+		return this.relevance;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	public String getRelevance() {
-		return relevance;
-	}
-	
 	public void setRelevance(String relevance) {
 		this.relevance = relevance;
 	}
 
-	public String toString() {
-		String s = "";
-		s += "ID: " + this.id;
-		s += "\nName: " + this.name;
-		s += "\nKey: " + this.key;
-		s += "\nStatus: " + this.status;
-		
-		return s;
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	public boolean equals(Object object) {

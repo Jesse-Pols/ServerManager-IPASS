@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Workshop from '@/components/Workshop'
 import Login from '@/components/Login'
 import ControlPanel from '@/components/ControlPanel'
+import Sample from '@/components/Sample'
 
 import cookies from './cookies';
 
@@ -28,6 +29,7 @@ const router = new Router({
             meta: { requiresAuth: true },
             name: 'workshop_aanmaken'
         },
+        { path: '/sample', component: Sample },
         { path: '*', redirect: '/' }
     ]
 });
