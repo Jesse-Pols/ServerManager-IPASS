@@ -28,8 +28,8 @@ public class DienstController extends BackendController {
 
         try {
             for (Dienst dienst : diensten) {
-                //boolean content = this.checkRequest(dienst.getKey());
-                boolean content = true;
+                boolean content = this.checkRequest(dienst.getKey());
+                //boolean content = true;
                 if (content) dienst.setStatus("Beschikbaar");
                 else dienst.setStatus("Niet Beschikbaar");
             }

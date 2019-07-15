@@ -65,7 +65,7 @@ export default {
     },
 
     mounted: function() {
-        this.check();
+        //this.check();
     },
 
     data () {
