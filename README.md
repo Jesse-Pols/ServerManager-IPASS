@@ -12,6 +12,9 @@
 [![versionjest](https://img.shields.io/badge/jest-23.6.0-brightgreen.svg?logo=jest)](https://jestjs.io/)
 [![versionnightwatch](https://img.shields.io/badge/nightwatch-0.9.21-brightgreen.svg)](http://nightwatchjs.org/)
 
+Dit is het project van Jesse Pols, voor IPASS.
+2019, 1e (propedeuse) jaar van HBO ICT.
+
 Dit project is gemaakt met Spring-Boot en VueJS.
 Run de server met start-server.bat, oftewel met:
 start cmd.exe /k mvn --projects backend spring-boot:run
