@@ -28,6 +28,9 @@ Voor de frontend, VueJS:
 
 # Links
 
+Klein applausje voor JonasHackt: https://github.com/jonashackt/spring-boot-vuejs
+Hier heb ik heel veel aan gehad bij dit project.
+
 Nice introductory video: https://www.youtube.com/watch?v=z6hQqgvGI4Y
 
 Examples: https://vuejs.org/v2/examples/
